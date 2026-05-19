@@ -1,6 +1,6 @@
 # LeetCode Learning Log
 
-**Author:** ChengYi Li  
+**Author:** LouisLi1020  
 **Started:** 2026-01-12  
 **Primary language:** Java  
 **Study plan:** [Top Interview 150](https://leetcode.com/studyplan/top-interview-150/)
