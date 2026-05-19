@@ -1,3 +1,8 @@
 .DS_Store
 .idea/
 *.class
+
+# Local-only journal drafts (kept in workspace leetcode/weeks/)
+journal/week-19-2026-05-18.md
+journal/week-20-2026-05-25.md
+journal/week-21-2026-06-01.md

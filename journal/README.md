@@ -1,6 +1,6 @@
 # Journal · 週記索引
 
-[Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) · Day 1–150（每日 1 題）
+[Top Interview 150](https://leetcode.com/studyplan/top-interview-150/)
 
 | 週 | 檔案 |
 |----|------|
@@ -22,6 +22,5 @@
 | 16 | [week-16-2026-04-27.md](week-16-2026-04-27.md) |
 | 17 | [week-17-2026-05-04.md](week-17-2026-05-04.md) |
 | 18 | [week-18-2026-05-11.md](week-18-2026-05-11.md) |
-| 19 | [week-19-2026-05-18.md](week-19-2026-05-18.md) |
-| 20 | [week-20-2026-05-25.md](week-20-2026-05-25.md) |
-| 21 | [week-21-2026-06-01.md](week-21-2026-06-01.md) |
+
+> **week-19～21** 僅保留本機工作區（`leetcode/weeks/`），尚未上傳此 repo。完整 150 題索引見 [study-plan/](../study-plan/README.md)。
