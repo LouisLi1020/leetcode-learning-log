@@ -23,4 +23,4 @@
 | 17 | [week-17-2026-05-04.md](week-17-2026-05-04.md) |
 | 18 | [week-18-2026-05-11.md](week-18-2026-05-11.md) |
 
-> **week-19～21** 僅保留本機工作區（`leetcode/weeks/`），尚未上傳此 repo。完整 150 題索引見 [study-plan/](../study-plan/README.md)。
+> **week-19～21** 僅保留本機工作區（`leetcode/weeks/`），尚未上傳此 repo。題單索引見 [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/)。

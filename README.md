@@ -11,20 +11,21 @@ Personal interview-prep repository (not tied to university coursework labels).
 
 | Section | Description |
 |---------|-------------|
-| [study-plan/](study-plan/README.md) | All **150** problems by topic (Top Interview 150) |
-| [journal/](journal/week-01-2026-01-12.md) | Weekly diary + detailed solutions |
+| [journal/](journal/README.md) | Weekly diary + per-problem notes (Top Interview 150) |
 | [plan/](plan/180-day-plan.md) | Six-month roadmap |
 
-## Progress (150/150 with full notes)
+## Progress
 
-| Topic block | Status |
-|-------------|--------|
-| Array / String (start of plan) | Week 1 detailed · Week 2+ in progress |
-| Remaining topics | Indexed with per-problem note stubs |
+| Item | Status |
+|------|--------|
+| Journal on GitHub | [week-01](journal/week-01-2026-01-12.md) – [week-18](journal/week-18-2026-05-11.md) |
+| Local-only weeks | week-19–21（本機 `leetcode/weeks/`） |
+| Official checklist | [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) |
 
 ## How to use
 
-1. Pick the next `todo` row in [study-plan/](study-plan/README.md).
-2. Solve on LeetCode, then fill the matching file under `study-plan/*/notes/`.
-3. For long write-ups, add a section to `journal/week-XX.md`.
+1. Follow [journal/README.md](journal/README.md) week by week.
+2. Solve on LeetCode, then read or edit the matching day in `journal/week-XX.md`.
+3. Long-term roadmap: [plan/180-day-plan.md](plan/180-day-plan.md).
 
+> Per-problem notes live in **journal** only. A duplicate `study-plan/` tree is not published on this repo.
