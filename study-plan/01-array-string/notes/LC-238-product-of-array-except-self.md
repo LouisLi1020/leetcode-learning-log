@@ -7,24 +7,29 @@
 | 狀態 | **done** |
 | 題目 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) |
 
-**題意：** 原地將陣列按 0、1、2 排序（荷蘭國旗）。
+**題意：** 回傳陣列 `answer`，其中 `answer[i]` 為除 `nums[i]` 外其餘元素乘積；**不可用除法**。
 
-**核心：** **三指標** low/mid/high：mid==1 交換後 mid++；mid==2 與 high 交換僅 high--。
+**核心：** 左掃建 **prefix** 到 `answer`；右掃乘 **suffix**。輸出陣列不計入額外空間。
+
+| 變數 | 意義 |
+|------|------|
+| `ans[i]` | 左側乘積（第一趟）× 右側乘積（第二趟） |
+| `suffix` | 從右往左累積的乘積 |
 
 ```java
-public void sortColors(int[] nums) {
-    int low = 0, mid = 0, high = nums.length - 1;
-    while (mid <= high) {
-        if (nums[mid] == 0) {
-            swap(nums, low++, mid++);
-        } else if (nums[mid] == 1) {
-            mid++;
-        } else {
-            swap(nums, mid, high--);
-        }
+public int[] productExceptSelf(int[] nums) {
+    int n = nums.length;
+    int[] ans = new int[n];
+    ans[0] = 1;
+    for (int i = 1; i < n; i++)
+        ans[i] = ans[i - 1] * nums[i - 1];
+    int suffix = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        ans[i] *= suffix;
+        suffix *= nums[i];
     }
+    return ans;
 }
-private void swap(int[] a, int i, int j) { int t = a[i]; a[i] = a[j]; a[j] = t; }
 ```
 
-**複雜度：** 時間 O(n) · 空間 O(1)
+**複雜度：** 時間 O(n) · 空間 O(1)（輸出不計）
