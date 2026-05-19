@@ -2,14 +2,33 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | Kadane variant |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Maximum Sum Circular Subarray](https://leetcode.com/problems/maximum-sum-circular-subarray/) |
 
-## 待完成
+**題意：** 環形陣列的最大子陣列和。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 一般 Kadane 最大和 **或** `total - minSubarray`（跨首尾）；若全負數則答案為 Kadane 最大（不用環形）。
+
+| 情況 | 公式 |
+|------|------|
+| 一般 | max(Kadane max, sum - Kadane min) |
+| 全負 | Kadane max |
+
+```java
+public int maxSubarraySumCircular(int[] nums) {
+    int total = 0, maxSum = nums[0], minSum = nums[0];
+    int curMax = nums[0], curMin = nums[0];
+    for (int i = 1; i < nums.length; i++) {
+        total += nums[i];
+        curMax = Math.max(nums[i], curMax + nums[i]);
+        maxSum = Math.max(maxSum, curMax);
+        curMin = Math.min(nums[i], curMin + nums[i]);
+        minSum = Math.min(minSum, curMin);
+    }
+    return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
+}
+```
+
+**複雜度：** 時間 O(n) · 空間 O(1)

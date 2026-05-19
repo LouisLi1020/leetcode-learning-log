@@ -2,14 +2,24 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | Heap / quickselect |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) |
 
-## 待完成
+**題意：** 找陣列第 k 大元素。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** **最小堆** 維持 k 個最大；或 **quickselect** 平均 O(n)。
+
+```java
+public int findKthLargest(int[] nums, int k) {
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    for (int x : nums) {
+        minHeap.offer(x);
+        if (minHeap.size() > k) minHeap.poll();
+    }
+    return minHeap.peek();
+}
+```
+
+**複雜度：** 時間 O(n log k) · 空間 O(k)

@@ -2,14 +2,31 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | DFS range |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/) |
 
-## 待完成
+**題意：** 驗證是否為合法 BST（左<根<右，遞迴定義）。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** DFS 帶 (min, max) 區間：node.val 須在 (min, max) 內；左右遞迴縮小界。
+
+| 子樹 | 區間 |
+|------|------|
+| 左 | (min, node.val) |
+| 右 | (node.val, max) |
+
+```java
+public boolean isValidBST(TreeNode root) {
+    return valid(root, null, null);
+}
+boolean valid(TreeNode node, Integer min, Integer max) {
+    if (node == null) return true;
+    if ((min != null && node.val <= min) || (max != null && node.val >= max))
+        return false;
+    return valid(node.left, min, node.val)
+        && valid(node.right, node.val, max);
+}
+```
+
+**複雜度：** O(n) 時間，O(h) 空間。

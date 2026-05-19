@@ -2,14 +2,34 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | BFS |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/) |
 
-## 待完成
+**題意：** 層序遍歷二元樹，回傳每層節點值列表。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** BFS：每輪固定 size，依序 poll 同層節點並 push 子節點。
+
+```java
+public List<List<Integer>> levelOrder(TreeNode root) {
+    List<List<Integer>> ans = new ArrayList<>();
+    if (root == null) return ans;
+    Queue<TreeNode> q = new ArrayDeque<>();
+    q.offer(root);
+    while (!q.isEmpty()) {
+        int size = q.size();
+        List<Integer> level = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            TreeNode node = q.poll();
+            level.add(node.val);
+            if (node.left != null) q.offer(node.left);
+            if (node.right != null) q.offer(node.right);
+        }
+        ans.add(level);
+    }
+    return ans;
+}
+```
+
+**複雜度：** O(n) 時間，O(w) 空間。

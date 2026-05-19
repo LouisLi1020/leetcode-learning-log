@@ -2,14 +2,29 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | Cycle detection |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Happy Number](https://leetcode.com/problems/happy-number/) |
 
-## 待完成
+**題意：** 反覆將 n 換成各位平方和，是否進入 1。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** HashSet 記已見值；循環中若為 1 回 true，重複回 false。
+
+```java
+public boolean isHappy(int n) {
+    Set<Integer> seen = new HashSet<>();
+    while (n != 1 && seen.add(n)) {
+        int sum = 0;
+        while (n > 0) {
+            int d = n % 10;
+            sum += d * d;
+            n /= 10;
+        }
+        n = sum;
+    }
+    return n == 1;
+}
+```
+
+**複雜度：** 時間 O(log n) · 空間 O(log n)

@@ -2,14 +2,20 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | DFS/BFS |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) |
 
-## 待完成
+**題意：** 求二元樹最大深度（根到最遠葉的節點數）。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 遞迴：空樹 0；否則 1 + max(左深, 右深)。也可 BFS 層序計層數。
+
+```java
+public int maxDepth(TreeNode root) {
+    if (root == null) return 0;
+    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+}
+```
+
+**複雜度：** O(n) 時間，O(h) 空間（遞迴棧，h=樹高）。

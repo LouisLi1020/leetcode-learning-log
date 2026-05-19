@@ -2,14 +2,26 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | Stack |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/) |
 
-## 待完成
+**題意：** 括號字串是否有效（成對且順序正確）。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** **Stack**：左括號 push，右括號 pop 比對。
+
+```java
+public boolean isValid(String s) {
+    Deque<Character> st = new ArrayDeque<>();
+    Map<Character, Character> pair = Map.of(')', '(', ']', '[', '}', '{');
+    for (char c : s.toCharArray()) {
+        if (pair.containsKey(c)) {
+            if (st.isEmpty() || st.pop() != pair.get(c)) return false;
+        } else st.push(c);
+    }
+    return st.isEmpty();
+}
+```
+
+**複雜度：** 時間 O(n) · 空間 O(n)

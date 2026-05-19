@@ -2,14 +2,26 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | Binary search |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Sqrt(x)](https://leetcode.com/problems/sqrt-x/) |
 
-## 待完成
+**題意：** 求 `sqrt(x)` 向下取整。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 二分 `lo=0, hi=x`：若 `mid <= x/mid` 則答案至少 `mid`。
+
+```java
+public int mySqrt(int x) {
+    if (x < 2) return x;
+    int lo = 1, hi = x / 2;
+    while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if ((long) mid * mid <= x) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return hi;
+}
+```
+
+**複雜度：** 時間 O(log x) · 空間 O(1)

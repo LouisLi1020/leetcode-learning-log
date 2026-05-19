@@ -2,14 +2,33 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Hard |
 | Pattern | Stack |
-| 狀態 | **todo** |
+| 難度 | Hard |
+| 狀態 | **done** |
 | 題目 | [Basic Calculator](https://leetcode.com/problems/basic-calculator/) |
 
-## 待完成
+**題意：** 字串基本計算器：+ - 與括號，無乘除。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** Stack 存 **sign** 與累加；遇 ( 推入當前結果與符號，遇 ) 合併。
+
+```java
+public int calculate(String s) {
+    Deque<Integer> stack = new ArrayDeque<>();
+    int res = 0, num = 0, sign = 1;
+    for (char c : s.toCharArray()) {
+        if (Character.isDigit(c)) num = num * 10 + (c - '0');
+        else if (c == '+' || c == '-') {
+            res += sign * num; num = 0; sign = (c == '+') ? 1 : -1;
+        } else if (c == '(') {
+            stack.push(res); stack.push(sign);
+            res = 0; sign = 1;
+        } else if (c == ')') {
+            res += sign * num; num = 0;
+            res *= stack.pop(); res += stack.pop();
+        }
+    }
+    return res + sign * num;
+}
+```
+
+**複雜度：** 時間 O(n) · 空間 O(n)

@@ -2,14 +2,24 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | Bit |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Reverse Bits](https://leetcode.com/problems/reverse-bits/) |
 
-## 待完成
+**題意：** 反轉 32 位元無符號整數的二進位。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 每次取最低位接到 `res` 左移；`n` 右移；共 32 次。
+
+```java
+public int reverseBits(int n) {
+    int res = 0;
+    for (int i = 0; i < 32; i++) {
+        res = (res << 1) | (n & 1);
+        n >>>= 1;
+    }
+    return res;
+}
+```
+
+**複雜度：** 時間 O(1) · 空間 O(1)

@@ -15,7 +15,7 @@ Personal interview-prep repository (not tied to university coursework labels).
 | [journal/](journal/week-01-2026-01-12.md) | Weekly diary + detailed solutions |
 | [plan/](plan/180-day-plan.md) | Six-month roadmap |
 
-## Progress (11/150 with full notes)
+## Progress (150/150 with full notes)
 
 | Topic block | Status |
 |-------------|--------|

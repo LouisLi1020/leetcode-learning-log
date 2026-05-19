@@ -2,14 +2,24 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Easy |
 | Pattern | Bit count |
-| 狀態 | **todo** |
+| 難度 | Easy |
+| 狀態 | **done** |
 | 題目 | [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/) |
 
-## 待完成
+**題意：** 計算 unsigned 整數中 1 的個數。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** `n &= n-1` 清除最低位 1，計數次數（Brian Kernighan）。
+
+```java
+public int hammingWeight(int n) {
+    int count = 0;
+    while (n != 0) {
+        n &= (n - 1);
+        count++;
+    }
+    return count;
+}
+```
+
+**複雜度：** 時間 O(位數) · 空間 O(1)

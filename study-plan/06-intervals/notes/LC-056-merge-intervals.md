@@ -2,14 +2,27 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | Sort + merge |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Merge Intervals](https://leetcode.com/problems/merge-intervals/) |
 
-## 待完成
+**題意：** 合併所有重疊區間。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 按起點排序；若 curr.start<=prev.end 則擴展 end，否則加入結果。
+
+```java
+public int[][] merge(int[][] intervals) {
+    Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+    List<int[]> merged = new ArrayList<>();
+    for (int[] iv : intervals) {
+        if (merged.isEmpty() || iv[0] > merged.get(merged.size()-1)[1])
+            merged.add(iv);
+        else
+            merged.get(merged.size()-1)[1] = Math.max(merged.get(merged.size()-1)[1], iv[1]);
+    }
+    return merged.toArray(new int[merged.size()][]);
+}
+```
+
+**複雜度：** 時間 O(n log n) · 空間 O(n)

@@ -2,13 +2,29 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | Prefix/suffix product |
-| 狀態 | **partial** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) |
 
-## 預期要點
+**題意：** 原地將陣列按 0、1、2 排序（荷蘭國旗）。
 
-- 不能用除法（含零時）
-- `answer[i] = (左側乘積) × (右側乘積)`
-- O(n) 時間、O(1) 額外空間（輸出不計）
+**核心：** **三指標** low/mid/high：mid==1 交換後 mid++；mid==2 與 high 交換僅 high--。
+
+```java
+public void sortColors(int[] nums) {
+    int low = 0, mid = 0, high = nums.length - 1;
+    while (mid <= high) {
+        if (nums[mid] == 0) {
+            swap(nums, low++, mid++);
+        } else if (nums[mid] == 1) {
+            mid++;
+        } else {
+            swap(nums, mid, high--);
+        }
+    }
+}
+private void swap(int[] a, int i, int j) { int t = a[i]; a[i] = a[j]; a[j] = t; }
+```
+
+**複雜度：** 時間 O(n) · 空間 O(1)

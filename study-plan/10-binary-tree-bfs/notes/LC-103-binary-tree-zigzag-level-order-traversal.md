@@ -2,14 +2,37 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | BFS |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) |
 
-## 待完成
+**題意：** 鋸齒形（zigzag）層序遍歷：奇數層左→右，偶數層右→左。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** BFS 同 102，用 `leftToRight` 旗標決定加入 level 頭或尾。
+
+```java
+public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+    List<List<Integer>> ans = new ArrayList<>();
+    if (root == null) return ans;
+    Queue<TreeNode> q = new ArrayDeque<>();
+    q.offer(root);
+    boolean leftToRight = true;
+    while (!q.isEmpty()) {
+        int size = q.size();
+        LinkedList<Integer> level = new LinkedList<>();
+        for (int i = 0; i < size; i++) {
+            TreeNode node = q.poll();
+            if (leftToRight) level.addLast(node.val);
+            else level.addFirst(node.val);
+            if (node.left != null) q.offer(node.left);
+            if (node.right != null) q.offer(node.right);
+        }
+        ans.add(level);
+        leftToRight = !leftToRight;
+    }
+    return ans;
+}
+```
+
+**複雜度：** O(n) 時間，O(w) 空間。

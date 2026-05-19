@@ -2,14 +2,25 @@
 
 | 項目 | 內容 |
 |------|------|
-| 難度 | Medium |
 | Pattern | Binary search |
-| 狀態 | **todo** |
+| 難度 | Medium |
+| 狀態 | **done** |
 | 題目 | [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) |
 
-## 待完成
+**題意：** 旋轉陣列（無重複）的最小元素。
 
-- [ ] 讀題與邊界
-- [ ] 寫出 brute force → 優化
-- [ ] 記錄 time / space complexity
-- [ ] 用 Java 實作並 AC
+**核心：** 若 `nums[mid] > nums[hi]`，最小在右；否則在左含 `mid`。
+
+```java
+public int findMin(int[] nums) {
+    int lo = 0, hi = nums.length - 1;
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (nums[mid] > nums[hi]) lo = mid + 1;
+        else hi = mid;
+    }
+    return nums[lo];
+}
+```
+
+**複雜度：** 時間 O(log n) · 空間 O(1)
